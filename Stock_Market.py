@@ -1,7 +1,8 @@
 #B7M49ARQFBP3BKBF
 import requests
-from matplotlib import pyplot
+from matplotlib import pyplot as plt
 import pandas as pd
+import datetime
 from pandas import DataFrame
 def TIME_SERIES_INTRADAY():
     url_a = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol='
@@ -23,5 +24,8 @@ def TIME_SERIES_INTRADAY():
         volume.append(j["5. volume"])
         low.append(j["3. low"])
     df = DataFrame(list(zip(time_stamp,open,close,high,low,volume)),columns=['time_stamp','open','close','high','low','volume'])
+    df["time_stamp"] = df['time_stamp'].astype('datetime64[ns]')
+    plt.plot(df["time_stamp"],df["close"])
+    plt.show()
     print(df)
 TIME_SERIES_INTRADAY()
