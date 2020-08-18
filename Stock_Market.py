@@ -22,13 +22,6 @@ def TIME_SERIES_INTRADAY():
         high.append(j["2. high"])
         volume.append(j["5. volume"])
         low.append(j["3. low"])
-    list_total = []
-    list_total.append(time_stamp)
-    list_total.append(open)
-    list_total.append(close)
-    list_total.append(high)
-    list_total.append(low)
-    list_total.append(volume)
     df = DataFrame(list(zip(time_stamp,open,close,high,low,volume)),columns=['time_stamp','open','close','high','low','volume'])
     print(df)
 TIME_SERIES_INTRADAY()
