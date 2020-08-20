@@ -15,6 +15,25 @@ st.write("### Please Select Graph Style Below 👇👇")
 graph_type=st.selectbox("Select Graph Type 📊",("Line Graph","Candle Graph","Both (Line & Bar Graph)"))
 st.write("### Please Select The Category Below 👇👇")
 category =st.selectbox("Select Category Type",("TIME_SERIES_INTRADAY","TIME_SERIES_DAILY","TIME_SERIES_MONTHLY"))
+st.write("### Please Select The Box Below for Moving Point Average👇👇")
+ch = st.checkbox("ANALYSIS MOVING POINT AVERAGE GRAPH")
+if ch:
+    interval = st.selectbox(
+    'Please Select A Interval For Moving Point Avegrage',
+    ('1min','5min','15min','30min','60min','daily','weekly','monthly'))
+    time_period = st.slider(
+    'Select a range of values for time period',
+    60.0, 200.0)
+    series_type = st.selectbox(
+    'Please Select Desired Price Type in the Time Series',
+    ('close','open','high','low'))
+    v =True
+else:
+    interval = None
+    time_period = None
+    series_type = None
+    v =False
+
 b=st.button("SUBMIT")
 
 def _max_width_():
@@ -31,7 +50,7 @@ def _max_width_():
     )
 _max_width_()
 @st.cache(suppress_st_warning=True)
-def MAIN(stock,graph_type,category):
+def MAIN(stock,graph_type,category,interval,time_period,series_type,v):
     _max_width_()
     if category == "TIME_SERIES_INTRADAY":
         TIME_SERIES_INTRADAY(stock,graph_type)
@@ -39,6 +58,12 @@ def MAIN(stock,graph_type,category):
         TIME_SERIES_DAILY(stock,graph_type)
     elif category == "TIME_SERIES_MONTHLY":
         TIME_SERIES_MONTHLY(stock,graph_type)
+    if v:
+       interval = str(interval)
+       time_period = str(int(time_period))
+       series_type = str(series_type)
+       SMA(stock,interval,time_period,series_type)
+
 
 
 def TIME_SERIES_INTRADAY(stock,graph_type):
@@ -68,13 +93,13 @@ def TIME_SERIES_INTRADAY(stock,graph_type):
                                          high=df2['high'],
                                          low=df2['low'],
                                          close=df2['close'])])
-        fig.update_layout(title='IRR', autosize=False,
+        fig.update_layout(title='Candle Graph', autosize=False,
                   width=1400, height=800,
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
     elif graph_type == "Line Graph":
         fig = px.line(df2, x='time_stamp', y='high')
-        fig.update_layout(title='IRR', autosize=False,
+        fig.update_layout(title='Line Graph', autosize=False,
                   width=1400, height=700,
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
@@ -84,12 +109,12 @@ def TIME_SERIES_INTRADAY(stock,graph_type):
                                          high=df2['high'],
                                          low=df2['low'],
                                          close=df2['close'])])
-        fig.update_layout(title='IRR', autosize=False,
+        fig.update_layout(title='Candle Graph', autosize=False,
                   width=1400, height=800,
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
         fig = px.line(df2, x='time_stamp', y='high')
-        fig.update_layout(title='IRR', autosize=False,
+        fig.update_layout(title='Line Graph', autosize=False,
                   width=1400, height=700,
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
@@ -123,13 +148,13 @@ def TIME_SERIES_DAILY(stock,graph_type):
                                          low=df['low'],
                                          close=df['close'])])
 
-        fig.update_layout(title='IRR', autosize=False,
+        fig.update_layout(title='Candle Graph', autosize=False,
                   width=1400, height=800,
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
     elif graph_type == "Line Graph":
         fig = px.line(df, x='time_stamp', y='high')
-        fig.update_layout(title='IRR', autosize=False,
+        fig.update_layout(title='Line Graph', autosize=False,
                   width=1400, height=700,
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
@@ -139,12 +164,12 @@ def TIME_SERIES_DAILY(stock,graph_type):
                                          high=df['high'],
                                          low=df['low'],
                                          close=df['close'])])
-        fig.update_layout(title='IRR', autosize=False,
+        fig.update_layout(title='Candle Graph', autosize=False,
                   width=1400, height=800,
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
         fig = px.line(df, x='time_stamp', y='high')
-        fig.update_layout(title='IRR', autosize=False,
+        fig.update_layout(title='Line Graph', autosize=False,
                   width=1400, height=700,
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
@@ -176,13 +201,13 @@ def TIME_SERIES_MONTHLY(stock,graph_type):
                                          low=df['low'],
                                          close=df['close'])])
 
-        fig.update_layout(title='IRR', autosize=False,
+        fig.update_layout(title='Candle Graph', autosize=False,
                   width=1400, height=800,
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
     elif graph_type == "Line Graph":
         fig = px.line(df, x='time_stamp', y='high')
-        fig.update_layout(title='IRR', autosize=False,
+        fig.update_layout(title='Line Graph', autosize=False,
                   width=1400, height=700,
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
@@ -192,16 +217,36 @@ def TIME_SERIES_MONTHLY(stock,graph_type):
                                          high=df['high'],
                                          low=df['low'],
                                          close=df['close'])])
-        fig.update_layout(title='IRR', autosize=False,
+        fig.update_layout(title='Candle Graph', autosize=False,
                   width=1400, height=800,
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
         fig = px.line(df, x='time_stamp', y='high')
-        fig.update_layout(title='IRR', autosize=False,
+        fig.update_layout(title='Line Graph', autosize=False,
                   width=1400, height=700,
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
+def SMA(stock,interval,time_period,series_type):
+    url_a = 'https://www.alphavantage.co/query?function=SMA&symbol='
+    url_b = '&apikey=B7M49ARQFBP3BKBF'
+    SMA_url = url_a + stock + "&interval=" +interval+"&time_period="+time_period+"&series_type="+ series_type+ url_b
+    print(SMA_url)
+    data = requests.get(SMA_url).json()
+    time_stamp = []
+    sma = []
+    for i,j in data["Technical Analysis: SMA"].items():
+        time_stamp.append(i)
+        sma.append(j["SMA"])
+    df = DataFrame(list(zip(time_stamp,sma)),
+                   columns=['time_stamp','sma'])
+    df["time_stamp"] = df['time_stamp'].astype('datetime64[ns]')
+    fig = px.line(df, x='time_stamp', y='sma')
+    fig.update_layout(title='Line Graph', autosize=False,
+                  width=1400, height=700,
+                  margin=dict(l=40, r=40, b=40, t=40))
+    st.plotly_chart(fig)
+    
 if b:
-    MAIN(stock,graph_type,category)
+    MAIN(stock,graph_type,category,interval,time_period,series_type,v)
 
 
