@@ -17,9 +17,22 @@ st.write("### Please Select The Category Below 👇👇")
 category =st.selectbox("Select Category Type",("TIME_SERIES_INTRADAY","TIME_SERIES_DAILY"))
 b=st.button("SUBMIT")
 
-
-@st.cache
+def _max_width_():
+    max_width_str = f"max-width: 2000px;"
+    st.markdown(
+        f"""
+    <style>
+    .reportview-container .main .block-container{{
+        {max_width_str}
+    }}
+    </style>    
+    """,
+        unsafe_allow_html=True,
+    )
+_max_width_()
+@st.cache(suppress_st_warning=True)
 def MAIN(stock,graph_type,category):
+    _max_width_()
     if category == "TIME_SERIES_INTRADAY":
         TIME_SERIES_INTRADAY(stock,graph_type)
     elif category == "TIME_SERIES_DAILY":
@@ -48,24 +61,36 @@ def TIME_SERIES_INTRADAY(stock,graph_type):
     df["time_stamp"] = df['time_stamp'].astype('datetime64[ns]')
     df2 = df.iloc[:85,:]
     if graph_type == "Candle Graph":
-        fig = go.Figure(data=[go.Candlestick(x=df['time_stamp'],
+        fig = go.Figure(data=[go.Candlestick(x=df2['time_stamp'],
                                          open=df2['open'],
                                          high=df2['high'],
                                          low=df2['low'],
                                          close=df2['close'])])
-        fig.show()
+        fig.update_layout(title='IRR', autosize=False,
+                  width=1400, height=800,
+                  margin=dict(l=40, r=40, b=40, t=40))
+        st.plotly_chart(fig)
     elif graph_type == "Line Graph":
         fig = px.line(df2, x='time_stamp', y='high')
-        fig.show()
+        fig.update_layout(title='IRR', autosize=False,
+                  width=1400, height=700,
+                  margin=dict(l=40, r=40, b=40, t=40))
+        st.plotly_chart(fig)
     elif graph_type == "Both (Line & Bar Graph)":
-        fig = go.Figure(data=[go.Candlestick(x=df['time_stamp'],
+        fig = go.Figure(data=[go.Candlestick(x=df2['time_stamp'],
                                          open=df2['open'],
                                          high=df2['high'],
                                          low=df2['low'],
                                          close=df2['close'])])
-        fig.show()
+        fig.update_layout(title='IRR', autosize=False,
+                  width=1400, height=800,
+                  margin=dict(l=40, r=40, b=40, t=40))
+        st.plotly_chart(fig)
         fig = px.line(df2, x='time_stamp', y='high')
-        fig.show()
+        fig.update_layout(title='IRR', autosize=False,
+                  width=1400, height=700,
+                  margin=dict(l=40, r=40, b=40, t=40))
+        st.plotly_chart(fig)
 
 
 def TIME_SERIES_DAILY(stock,graph_type):
@@ -96,19 +121,31 @@ def TIME_SERIES_DAILY(stock,graph_type):
                                          low=df['low'],
                                          close=df['close'])])
 
-        fig.show()
+        fig.update_layout(title='IRR', autosize=False,
+                  width=1400, height=800,
+                  margin=dict(l=40, r=40, b=40, t=40))
+        st.plotly_chart(fig)
     elif graph_type == "Line Graph":
         fig = px.line(df, x='time_stamp', y='high')
-        fig.show()
+        fig.update_layout(title='IRR', autosize=False,
+                  width=1400, height=700,
+                  margin=dict(l=40, r=40, b=40, t=40))
+        st.plotly_chart(fig)
     elif graph_type == "Both (Line & Bar Graph)":
         fig = go.Figure(data=[go.Candlestick(x=df['time_stamp'],
-                                         open=df2['open'],
-                                         high=df2['high'],
-                                         low=df2['low'],
-                                         close=df2['close'])])
-        fig.show()
-        fig = px.line(df2, x='time_stamp', y='high')
-        fig.show()
+                                         open=df['open'],
+                                         high=df['high'],
+                                         low=df['low'],
+                                         close=df['close'])])
+        fig.update_layout(title='IRR', autosize=False,
+                  width=1400, height=800,
+                  margin=dict(l=40, r=40, b=40, t=40))
+        fig = px.line(df, x='time_stamp', y='high')
+        fig.update_layout(title='IRR', autosize=False,
+                  width=1400, height=700,
+                  margin=dict(l=40, r=40, b=40, t=40))
+        st.plotly_chart(fig)
 if b:
     MAIN(stock,graph_type,category)
+
 
