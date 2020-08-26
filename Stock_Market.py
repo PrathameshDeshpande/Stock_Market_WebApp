@@ -7,8 +7,9 @@ import datetime
 from pandas import DataFrame
 import plotly.express as px
 import plotly.graph_objects as go
+import random
 st.markdown("<h1 style='text-align: center; color: black;'>📈💰STOCK MARKET ANALYSIS🤑📉</h1>", unsafe_allow_html=True)
-st.markdown("<h1 style='text-align: center; color: black;'>Made by Prathamesh with ❤️</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: black;'>Made by Prathamesh with ❤️ For Investors </h1>", unsafe_allow_html=True)
 st.write("### Write The Name Of A Stock You Want To Study 👇👇")
 stock=st.text_input("NAME OF THE STOCK :", "")
 st.write("### Please Select Graph Style Below 👇👇")
@@ -53,16 +54,41 @@ _max_width_()
 def MAIN(stock,graph_type,category,interval,time_period,series_type,v):
     _max_width_()
     if category == "TIME_SERIES_INTRADAY":
+        st.write("### TIME SERIES INDRADAY GRAPH 👇👇")
         TIME_SERIES_INTRADAY(stock,graph_type)
     elif category == "TIME_SERIES_DAILY":
+        st.write("### TIME SERIES DAILY GRAPH 👇👇")
         TIME_SERIES_DAILY(stock,graph_type)
     elif category == "TIME_SERIES_MONTHLY":
+        st.write("### TIME SERIES MONTHLY GRAPH 👇👇")
         TIME_SERIES_MONTHLY(stock,graph_type)
     if v:
        interval = str(interval)
        time_period = str(int(time_period))
        series_type = str(series_type)
+       st.write("### MOVING POINT AVERAGE GRAPH 👇👇")
        SMA(stock,interval,time_period,series_type)
+    x = random.randrange(10)
+    if x == 0:
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐Markets can stay irrational longer than you can stay solvent⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
+    elif x==2:
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐When the tide goes out, you see who's swimming naked⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
+    elif x==3:
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐If you don't understand it, then put your life savings into it⭐⭐⭐⭐⭐⭐⭐⭐⭐")
+    elif x==4:
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐Bulls make money, bears make money, pigs get slaughtered,Don't Be a Pig⭐⭐⭐⭐⭐⭐⭐⭐")
+    elif x==5:
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐It's a market of stocks, not a stock market⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
+    elif x==6:
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐The trend is your friend⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
+    elif x==7:
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐If you have trouble imagining a 20 percent loss in the stock market, you shouldn't be in stocks⭐⭐⭐⭐⭐⭐⭐⭐⭐")
+    elif x==8:
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐Investing should be more like watching paint dry or watching grass grow⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
+    else :
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐How many millionaires do you know who have become wealthy by investing in savings accounts?⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
+    
+        
 
 
 
@@ -94,13 +120,25 @@ def TIME_SERIES_INTRADAY(stock,graph_type):
                                          low=df2['low'],
                                          close=df2['close'])])
         fig.update_layout(title='Candle Graph', autosize=False,
-                  width=1400, height=800,
+                  width=1400, height=800,xaxis_title="TIME",
+                  yaxis_title="PRICE",
+                  legend_title="Legend Title",
+                  font=dict(
+                  family="Courier New, monospace",
+                  size=18,
+                  color="RebeccaPurple"),
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
     elif graph_type == "Line Graph":
-        fig = px.line(df2, x='time_stamp', y='high')
+        fig = px.line(df2, x='time_stamp', y='high',title="Line Graph")
         fig.update_layout(title='Line Graph', autosize=False,
-                  width=1400, height=700,
+                  width=1400, height=700,xaxis_title="TIME",
+                  yaxis_title="PRICE",
+                  legend_title="Legend Title",
+                  font=dict(
+                  family="Courier New, monospace",
+                  size=18,
+                  color="RebeccaPurple"),
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
     elif graph_type == "Both (Line & Bar Graph)":
@@ -110,12 +148,24 @@ def TIME_SERIES_INTRADAY(stock,graph_type):
                                          low=df2['low'],
                                          close=df2['close'])])
         fig.update_layout(title='Candle Graph', autosize=False,
-                  width=1400, height=800,
+                  width=1400, height=800,xaxis_title="TIME",
+                  yaxis_title="PRICE",
+                  legend_title="Legend Title",
+                  font=dict(
+                  family="Courier New, monospace",
+                  size=18,
+                  color="RebeccaPurple"),
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
         fig = px.line(df2, x='time_stamp', y='high')
         fig.update_layout(title='Line Graph', autosize=False,
-                  width=1400, height=700,
+                  width=1400, height=700,xaxis_title="TIME",
+                  yaxis_title="PRICE",
+                  legend_title="Legend Title",
+                  font=dict(
+                  family="Courier New, monospace",
+                  size=18,
+                  color="RebeccaPurple"),
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
 
@@ -149,13 +199,25 @@ def TIME_SERIES_DAILY(stock,graph_type):
                                          close=df['close'])])
 
         fig.update_layout(title='Candle Graph', autosize=False,
-                  width=1400, height=800,
+                  width=1400, height=800,xaxis_title="TIME",
+                  yaxis_title="PRICE",
+                  legend_title="Legend Title",
+                  font=dict(
+                  family="Courier New, monospace",
+                  size=18,
+                  color="RebeccaPurple"),
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
     elif graph_type == "Line Graph":
         fig = px.line(df, x='time_stamp', y='high')
         fig.update_layout(title='Line Graph', autosize=False,
-                  width=1400, height=700,
+                  width=1400, height=700,xaxis_title="TIME",
+                  yaxis_title="PRICE",
+                  legend_title="Legend Title",
+                  font=dict(
+                  family="Courier New, monospace",
+                  size=18,
+                  color="RebeccaPurple"),
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
     elif graph_type == "Both (Line & Bar Graph)":
@@ -165,12 +227,24 @@ def TIME_SERIES_DAILY(stock,graph_type):
                                          low=df['low'],
                                          close=df['close'])])
         fig.update_layout(title='Candle Graph', autosize=False,
-                  width=1400, height=800,
+                  width=1400, height=800,xaxis_title="TIME",
+                  yaxis_title="PRICE",
+                  legend_title="Legend Title",
+                  font=dict(
+                  family="Courier New, monospace",
+                  size=18,
+                  color="RebeccaPurple"),
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
         fig = px.line(df, x='time_stamp', y='high')
         fig.update_layout(title='Line Graph', autosize=False,
-                  width=1400, height=700,
+                  width=1400, height=700,xaxis_title="TIME",
+                  yaxis_title="PRICE",
+                  legend_title="Legend Title",
+                  font=dict(
+                  family="Courier New, monospace",
+                  size=18,
+                  color="RebeccaPurple"),
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
 def TIME_SERIES_MONTHLY(stock,graph_type):
@@ -202,13 +276,25 @@ def TIME_SERIES_MONTHLY(stock,graph_type):
                                          close=df['close'])])
 
         fig.update_layout(title='Candle Graph', autosize=False,
-                  width=1400, height=800,
+                  width=1400, height=800,xaxis_title="TIME",
+                  yaxis_title="PRICE",
+                  legend_title="Legend Title",
+                  font=dict(
+                  family="Courier New, monospace",
+                  size=18,
+                  color="RebeccaPurple"),
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
     elif graph_type == "Line Graph":
         fig = px.line(df, x='time_stamp', y='high')
         fig.update_layout(title='Line Graph', autosize=False,
-                  width=1400, height=700,
+                  width=1400, height=700,xaxis_title="TIME",
+                  yaxis_title="PRICE",
+                  legend_title="Legend Title",
+                  font=dict(
+                  family="Courier New, monospace",
+                  size=18,
+                  color="RebeccaPurple"),
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
     elif graph_type == "Both (Line & Bar Graph)":
@@ -218,12 +304,24 @@ def TIME_SERIES_MONTHLY(stock,graph_type):
                                          low=df['low'],
                                          close=df['close'])])
         fig.update_layout(title='Candle Graph', autosize=False,
-                  width=1400, height=800,
+                  width=1400, height=800,xaxis_title="TIME",
+                  yaxis_title="PRICE",
+                  legend_title="Legend Title",
+                  font=dict(
+                  family="Courier New, monospace",
+                  size=18,
+                  color="RebeccaPurple"),
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
         fig = px.line(df, x='time_stamp', y='high')
         fig.update_layout(title='Line Graph', autosize=False,
-                  width=1400, height=700,
+                  width=1400, height=700,xaxis_title="TIME",
+                  yaxis_title="PRICE",
+                  legend_title="Legend Title",
+                  font=dict(
+                  family="Courier New, monospace",
+                  size=18,
+                  color="RebeccaPurple"),
                   margin=dict(l=40, r=40, b=40, t=40))
         st.plotly_chart(fig)
 def SMA(stock,interval,time_period,series_type):
@@ -242,7 +340,13 @@ def SMA(stock,interval,time_period,series_type):
     df["time_stamp"] = df['time_stamp'].astype('datetime64[ns]')
     fig = px.line(df, x='time_stamp', y='sma')
     fig.update_layout(title='Line Graph', autosize=False,
-                  width=1400, height=700,
+                  width=1400, height=700,xaxis_title="TIME",
+                  yaxis_title="PRICE",
+                  legend_title="Legend Title",
+                  font=dict(
+                  family="Courier New, monospace",
+                  size=18,
+                  color="RebeccaPurple"),
                   margin=dict(l=40, r=40, b=40, t=40))
     st.plotly_chart(fig)
     
