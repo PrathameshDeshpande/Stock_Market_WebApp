@@ -12,6 +12,6 @@
 🔨FURTHER FINISHING WILL BE DONE BEFORE DEPLOYING THIS WEBAPP🔧
 ```
 ```
-🤩🤩SO,STAY TUNE🤩🤩
+🤩🤩SO,STAY TUNED🤩🤩
 ```
 ## <div align="center" >💖💖💖💖💖THANK YOU 👽👽 HAPPY CODING💖💖💖💖💖</div>
