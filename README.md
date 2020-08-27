@@ -4,7 +4,7 @@
 ## <div align="center" >:point_down: SAMPLE SHOT :point_down:</div>
 <p><img align="Center" width="1000" height="3000" src="https://github.com/PrathameshDeshpande/Stock_Market_WebApp/blob/master/screencapture-localhost-8501-2020-08-27-13_55_38.png"></p>
 
-**<div align="center">✨ 🐉LIBRARIES USED🐉 ✨</div>**
+## ✨ 🐉LIBRARIES USED🐉 ✨
 * **STREAMLIT**
 * **PANDAS**
 * **PLOTLY**
