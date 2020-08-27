@@ -70,21 +70,21 @@ def MAIN(stock,graph_type,category,interval,time_period,series_type,v):
        SMA(stock,interval,time_period,series_type)
     x = random.randrange(10)
     if x == 0:
-        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐Markets can stay irrational longer than you can stay solvent⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐Markets can stay irrational longer than you can stay solvent⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
     elif x==2:
-        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐When the tide goes out, you see who's swimming naked⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐When the tide goes out, you see who's swimming naked⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
     elif x==3:
-        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐If you don't understand it, then put your life savings into it⭐⭐⭐⭐⭐⭐⭐⭐⭐")
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐If you don't understand it, then put your life savings into it⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
     elif x==4:
-        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐Bulls make money, bears make money, pigs get slaughtered,Don't Be a Pig⭐⭐⭐⭐⭐⭐⭐⭐")
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐Bulls make money, bears make money, pigs get slaughtered,Don't Be a Pig⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
     elif x==5:
-        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐It's a market of stocks, not a stock market⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐It's a market of stocks, not a stock market⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
     elif x==6:
-        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐The trend is your friend⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐The trend is your friend⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
     elif x==7:
-        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐If you have trouble imagining a 20 percent loss in the stock market, you shouldn't be in stocks⭐⭐⭐⭐⭐⭐⭐⭐⭐")
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐If you have trouble imagining a 20 percent loss in the stock market, you shouldn't be in stocks⭐⭐⭐⭐⭐⭐⭐⭐⭐")
     elif x==8:
-        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐Investing should be more like watching paint dry or watching grass grow⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
+        st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐Investing should be more like watching paint dry or watching grass grow⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
     else :
         st.write("### ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐How many millionaires do you know who have become wealthy by investing in savings accounts?⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐")
     
